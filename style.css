@@ -48,8 +48,13 @@ header ul .inscription {
   text-align: right;
   padding: 30px 10% 0px 0px;
 }
+header ul .inscription a {
+  color: #0065fc;
+}
+
 header ul .interactive_ancre {
   text-align: center;
+  border-top: white 1px solid;
 }
 header ul .interactive_ancre:hover {
   border-bottom: 1px solid #0065fc;
@@ -96,9 +101,13 @@ nav #search .icon {
 }
 nav #search input {
   border: 1px solid #deebff;
+  font-weight: bold;
+}
+nav #search input:focus {
+  outline: none;
 }
 
-nav #search button {
+nav #search .button {
   width: 40px;
   height: 40px;
   background-color: #0065fc;
@@ -110,7 +119,7 @@ nav #search button {
   align-items: center;
   cursor: pointer;
 }
-nav #search button p {
+nav #search .button p {
   display: none;
 }
 
@@ -125,13 +134,14 @@ nav .filter ul li {
   display: flex;
   align-items: center;
   margin: 10px;
-  height: 40px;
+  padding: 20px 0;
+  height: 30px;
   border-radius: 50px;
   border: 1px solid #bbbbbb;
   border-left: none;
   width: max-content;
   cursor: pointer;
-  transition: all 0.5s;
+  transition: all 0.25s ease-out;
 }
 nav .filter ul li:hover .icon {
   color: #deebff;
@@ -139,13 +149,13 @@ nav .filter ul li:hover .icon {
 }
 nav .filter ul li:hover {
   color: #0065fc;
-  box-shadow: 3px 3px 6px #96bcf5;
+  box-shadow: 3px 3px 6px #cbcccc;
   transform: scale(1.1);
 }
 
 nav .filter ul li .icon {
-  width: 40px;
-  height: 40px;
+  width: 41px;
+  height: 41px;
   border-radius: 30px;
   display: flex;
   justify-content: center;
@@ -175,17 +185,21 @@ nav .status .logo {
   justify-content: center;
   align-items: center;
 }
-section {
+main {
   display: flex;
   flex-direction: column;
 }
-section #city_popular {
+main article h1 {
+  padding-left: 15px;
+}
+
+main #city_popular {
   order: -1;
   background-color: #f2f2f2;
   padding: 50px 0;
 }
 
-section #city_popular ul li {
+main #city_popular ul li {
   width: 95%;
   max-width: 350px;
   height: 150px;
@@ -195,8 +209,18 @@ section #city_popular ul li {
   padding: 5px;
   border-radius: 20px;
   box-shadow: 3px 3px 6px #b3b2b2;
+  position: relative;
 }
-section #city_popular ul li img {
+main #city_popular ul li h4,
+p {
+  margin-top: 10px;
+}
+main #city_popular ul li .star_container {
+  position: absolute;
+  bottom: 10px;
+  left: 40%;
+}
+main #city_popular ul li img {
   width: 40%;
   height: 100%;
   float: left;
@@ -205,11 +229,14 @@ section #city_popular ul li img {
   object-fit: cover;
   object-position: bottom;
 }
-section #city_accomodation {
+main #city_accomodation {
   padding: 50px 0;
 }
+main article h3 {
+  padding-left: 20px;
+}
 
-section #city_accomodation ul li {
+main #city_accomodation ul li {
   width: 95%;
   max-width: 350px;
   height: 200px;
@@ -218,7 +245,7 @@ section #city_accomodation ul li {
   border-radius: 20px;
   box-shadow: 3px 3px 6px #b3b2b2;
 }
-section #city_accomodation ul li img {
+main #city_accomodation ul li img {
   width: 100%;
   height: 60%;
   border-radius: 20px 20px 0 0;
@@ -226,33 +253,34 @@ section #city_accomodation ul li img {
   object-fit: cover;
 }
 
-section #city_accomodation p,
+main #city_accomodation p,
 .star_container,
 h4 {
   margin: 5px 0 0px 10px;
 }
 
-section .star_container {
+main .star_container {
   display: flex;
 }
-section .star_container .star {
+main .star_container .star {
   color: #0065fc;
 }
-section .star_container .empty_star {
+main .star_container .empty_star {
   color: #deebff;
 }
 
-section #city_activity ul {
+main #city_activity #photo-container {
   height: max-content;
 }
-section #city_activity ul li {
+main #city_activity #photo-container .activity-card {
   height: 20vh;
   width: 95%;
+  max-width: 350px;
   margin: 20px auto;
   border-radius: 20px;
   box-shadow: 3px 3px 6px #b3b2b2;
 }
-section #city_activity ul li img {
+main #city_activity #photo-container .activity-card img {
   height: 80%;
   width: 100%;
   object-fit: cover;
@@ -268,17 +296,19 @@ footer {
 
 footer h4 {
   margin-top: 50px;
+  margin-left: 0;
 }
 
 footer ul li {
   margin-top: 10px;
 }
 
-/* format tablette 768px + 
+/* 
 
 
 
 
+format tablette 768px + 
 
 
 
@@ -288,47 +318,64 @@ footer ul li {
 */
 
 @media (min-width: 768px) {
-  section #city_popular ul {
+  header ul .interactive_ancre {
+    margin-top: 10px;
+  }
+
+  main article h1 {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-left: 0;
+  }
+
+  main #city_popular ul {
     display: flex;
     flex-wrap: wrap;
   }
-  section #city_popular ul li {
+  main #city_popular ul li {
     width: 30%;
   }
-  section #city_accomodation ul {
+  main #city_accomodation ul {
     display: flex;
     flex-wrap: wrap;
   }
-  section #city_accomodation p,
+  main #city_accomodation p,
   .star_container,
   h4 {
     margin: 5px 0 0px 10px;
   }
-  section #city_activity ul {
+  main #city_activity #photo-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
   }
-
+  main #city_activity #photo-container .big_photo {
+    order: -1;
+    width: 40%;
+  }
+  main #city_activity #photo-container .small-photo-container {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+  main #city_activity #photo-container .small-photo-container .small-photo {
+    width: 40%;
+  }
   footer {
     display: flex;
     justify-content: space-around;
   }
 }
 
-/* format desktop 1023px+ 
+/* 
 
 
 
 
 
 
-
-
-
-
-
+format desktop 1023px+ 
 
 
 
@@ -352,9 +399,11 @@ footer ul li {
   }
 
   header ul .interactive_ancre {
+    margin-top: 0;
     padding: 30px;
     text-align: right;
-    width: 150px;
+    width: 200px;
+    text-align: center;
   }
   header ul .interactive_ancre:hover {
     border-top: 1px solid blue;
@@ -373,15 +422,15 @@ footer ul li {
   nav #search {
     margin: 10px 0px;
   }
-  nav #search button {
+  nav #search .button {
     width: max-content;
     padding: 0px 10px;
   }
 
-  nav #search button .fas {
+  nav #search .button .fas {
     display: none;
   }
-  nav #search button p {
+  nav #search .button p {
     display: block;
   }
 
@@ -391,18 +440,23 @@ footer ul li {
     width: 100%;
   }
 
-  section {
+  main {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
   }
+  main article h1 {
+    text-align: left;
+    margin: 0;
+    padding-left: 20px;
+  }
 
-  section #city_popular {
+  main #city_popular {
     order: 0;
     width: 30%;
     height: 70vh;
   }
-  section #city_popular ul {
+  main #city_popular ul {
     flex-direction: column;
     flex-wrap: nowrap;
     height: 95%;
@@ -410,57 +464,83 @@ footer ul li {
     width: 95%;
     margin: auto;
   }
-  section #city_popular ul li {
+  main #city_popular ul li {
     width: 100%;
     max-width: none;
     height: 30%;
   }
-  section #city_popular ul li img {
-  }
-  section #city_accomodation {
+  main #city_accomodation {
     width: 65%;
     background-color: #f2f2f2;
     height: 70vh;
   }
-  section #city_accomodation ul {
+  main #city_accomodation ul {
     height: 95%;
   }
-  section #city_accomodation ul li {
+  main #city_accomodation ul li {
     background-color: white;
     max-width: 30%;
     height: 40%;
   }
-  section #city_activity {
+  main #city_activity {
     margin-top: 50px;
+    height: 60vh;
+    width: 100%;
   }
 
-  section #city_activity ul {
+  main #city_activity #photo-container {
     justify-content: space-around;
-    width: 99vw;
-    height: 40vh;
+    height: 80%;
     margin-top: 10px;
   }
 
-  section #city_activity ul .big_photo {
+  main #city_activity #photo-container .big_photo {
+    order: 0;
     height: 100%;
     width: 20%;
     margin: 0;
   }
-  section #city_activity ul .small_photo {
+  main #city_activity #photo-container .big_photo h4 {
+    margin-top: 8%;
+  }
+  main #city_activity #photo-container .big_photo img {
+    height: 85%;
+  }
+
+  main #city_activity #photo-container .small-photo-container {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 100%;
+    height: 105%;
     width: 20%;
     margin: 0;
   }
-  section #city_activity .small_photo li {
+  main #city_activity #photo-container .small-photo-container .small-photo {
     height: 45%;
     width: 100%;
     margin: 0;
   }
   footer {
     margin-top: 50px;
+  }
+}
+
+@media (min-width: 2560px) {
+  body {
+    width: 80vw;
+    margin: auto;
+  }
+  main #city_activity {
+    height: 40vh;
+  }
+  main #city_popular {
+    height: 50vh;
+  }
+  main #city_accomodation {
+    height: 50vh;
+  }
+  * {
+    font-size: 1.05em;
   }
 }
